@@ -69,10 +69,10 @@ export default async function LineupPage() {
   if (!match) {
     return <p className="text-center text-gray-500 py-20">Match data unavailable.</p>
   }
-
   return (
-    {/* max-w-2xl gives the pitch room to breathe on mobile while capping desktop width (Req 6.1) */}
+  
     <div className="max-w-2xl mx-auto">
+      {/* max-w-2xl gives the pitch room to breathe on mobile while capping desktop width (Req 6.1) */}
       <div className="text-center mb-6">
         <p className="text-[#f5c518] text-xs font-semibold uppercase tracking-widest mb-1">
           {match.competition ?? 'Match Day'}
@@ -109,3 +109,4 @@ export default async function LineupPage() {
     </div>
   )
 }
+
