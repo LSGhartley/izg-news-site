@@ -26,26 +26,31 @@ export default function ArticleCard({ article, featured = false }: Props) {
     <Link href={`/news/${article.id}`}>
       <article
         className={`group rounded-xl border border-gray-800 bg-gray-900 hover:border-[#f5c518] transition-all overflow-hidden ${
-          featured ? 'md:flex' : ''
+          // lg:flex activates the horizontal layout at the desktop breakpoint (≥1024px),
+          // keeping mobile and tablet in the default stacked column layout (Req 7.2, 7.3)
+          featured ? 'lg:flex' : ''
         }`}
       >
         {/* Colour band at top acts as a visual category indicator */}
         <div className={`h-1 w-full ${categoryColor[article.category] ?? 'bg-gray-600'}`} />
 
-        <div className={`p-5 ${featured ? 'md:p-8' : ''}`}>
-          <span
-            className={`inline-block text-xs font-semibold px-2 py-0.5 rounded mb-3 ${
-              categoryColor[article.category] ?? 'bg-gray-700'
-            }`}
-          >
-            {categoryLabel[article.category] ?? article.category}
-          </span>
-
-          {article.ai_generated && (
-            <span className="ml-2 inline-block text-xs font-semibold px-2 py-0.5 rounded mb-3 bg-purple-700 text-white">
-              AI Generated
+        <div className={`p-5 ${featured ? 'lg:p-8' : ''}`}>
+          {/* flex-wrap prevents badge overflow on narrow mobile viewports (Req 7.5) */}
+          <div className="flex flex-wrap gap-1 mb-3">
+            <span
+              className={`inline-block text-xs font-semibold px-2 py-0.5 rounded ${
+                categoryColor[article.category] ?? 'bg-gray-700'
+              }`}
+            >
+              {categoryLabel[article.category] ?? article.category}
             </span>
-          )}
+
+            {article.ai_generated && (
+              <span className="inline-block text-xs font-semibold px-2 py-0.5 rounded bg-purple-700 text-white">
+                AI Generated
+              </span>
+            )}
+          </div>
 
           <h2
             className={`font-bold text-white group-hover:text-[#f5c518] transition-colors leading-snug ${

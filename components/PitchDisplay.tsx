@@ -39,7 +39,8 @@ export default function PitchDisplay({ players, formation }: Props) {
             className="absolute transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center"
             style={{ left: `${p.x_percent}%`, top: `${p.y_percent}%` }}
           >
-            <div className="w-9 h-9 rounded-full bg-[#f5c518] border-2 border-white flex items-center justify-center text-[#0d1117] font-black text-sm shadow-lg">
+            {/* Responsive token size: 28px base on mobile meets the 28px minimum (Req 8.3), scaling up at sm/lg breakpoints */}
+            <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-full bg-[#f5c518] border-2 border-white flex items-center justify-center text-[#0d1117] font-black shadow-lg text-[10px] sm:text-xs">
               {p.number}
             </div>
             <span className="mt-1 text-white text-[10px] font-semibold text-center leading-tight max-w-[60px] drop-shadow">

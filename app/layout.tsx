@@ -12,7 +12,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="min-h-screen bg-[#0d1117] text-white">
         <Navbar />
-        <main className="max-w-6xl mx-auto px-4 py-8">{children}</main>
+        {/* Responsive horizontal padding gives more breathing room on larger screens (Req 2, 3, 4, 5, 6) */}
+        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">{children}</main>
         <footer className="text-center text-sm text-gray-500 py-6 border-t border-gray-800 mt-12">
           © {new Date().getFullYear()} Izinja Ze Game FC. All rights reserved.
         </footer>

@@ -14,7 +14,8 @@ export default async function FixturesPage() {
 
   return (
     <div className="space-y-10">
-      <h1 className="text-3xl font-black text-white">Fixtures & Results</h1>
+      {/* text-2xl base prevents the heading from overflowing on narrow mobile viewports (Req 5.5) */}
+      <h1 className="text-2xl sm:text-3xl font-black text-white">Fixtures & Results</h1>
 
       <Section title="Upcoming Fixtures">
         {upcoming.length ? (
@@ -73,7 +74,8 @@ function MatchRow({ match, showScore = false }: { match: any; showScore?: boolea
         <p className="text-white font-semibold text-sm truncate">
           {home} <span className="text-gray-500">vs</span> {away}
         </p>
-        <p className="text-gray-500 text-xs mt-0.5">
+        {/* truncate prevents long venue+competition strings from breaking the row layout on mobile (Req 5.2, 5.4) */}
+        <p className="text-gray-500 text-xs mt-0.5 truncate">
           {format(new Date(match.match_date), 'EEE dd MMM yyyy')}
           {match.venue ? ` · ${match.venue}` : ''}
           {match.competition ? ` · ${match.competition}` : ''}

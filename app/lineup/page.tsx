@@ -71,7 +71,8 @@ export default async function LineupPage() {
   }
 
   return (
-    <div className="max-w-lg mx-auto">
+    {/* max-w-2xl gives the pitch room to breathe on mobile while capping desktop width (Req 6.1) */}
+    <div className="max-w-2xl mx-auto">
       <div className="text-center mb-6">
         <p className="text-[#f5c518] text-xs font-semibold uppercase tracking-widest mb-1">
           {match.competition ?? 'Match Day'}
@@ -91,7 +92,8 @@ export default async function LineupPage() {
 
       <PitchDisplay players={players} formation={lineup.formation} />
 
-      <div className="mt-6 grid grid-cols-2 gap-2">
+      {/* Single column on mobile prevents player cards from being too narrow to read (Req 6.2, 6.3) */}
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2">
         {players
           .sort((a, b) => a.number - b.number)
           .map((p) => (

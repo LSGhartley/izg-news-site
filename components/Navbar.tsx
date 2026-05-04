@@ -23,12 +23,14 @@ export default function Navbar() {
           <span className="font-bold text-white text-lg hidden sm:block">Izinja Ze Game FC</span>
         </Link>
 
-        <ul className="flex gap-1">
+        {/* flex-wrap prevents horizontal overflow on very narrow viewports (Req 1.7) */}
+        <ul className="flex flex-wrap gap-1">
           {links.map(({ href, label }) => (
             <li key={href}>
               <Link
                 href={href}
-                className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
+                // py-3 ensures the tap target meets the 44px minimum height required for touch devices (Req 1.6)
+                className={`px-3 py-3 rounded text-sm font-medium transition-colors inline-flex items-center min-h-[44px] ${
                   pathname === href
                     ? 'bg-[#f5c518] text-[#1a5c2a]'
                     : 'text-white hover:bg-white/10'
